@@ -3,7 +3,7 @@ const posts = [
  {title: 'Post Two', body: 'This is post two'}
 ];
 
-function getPosts(){
+ function getPosts(){
  setTimeout(()=>{
   let output = '';
   posts.forEach((post, index)=>{
@@ -13,7 +13,7 @@ function getPosts(){
  }, 1000);
 }
 
-function createPost(post){
+ function createPost(post){
  return new Promise((resolve,reject) => {
   setTimeout(() => {
    posts.push(post);
@@ -46,19 +46,19 @@ function deletePost(){
  });
 }
 
-function updateLastUserActivityTime(){
-  return new Promise((resolve, reject) =>{
-    setTimeout(()=>{
-      posts.lastActivityTime = new Date().getTime();
-      resolve(); 
-    },1000);
-  });
-}
+// function updateLastUserActivityTime(){
+//   return new Promise((resolve, reject) =>{
+//     setTimeout(()=>{
+//       posts.lastActivityTime = new Date().getTime();
+//       resolve(); 
+//     },1000);
+//   });
+// }
 
 createPost({title:'Post three', body:'This is post three'})
 createPost({title: 'Post Fourth', body:'This is post fourth'})
  .then(() =>{
-  getPosts()
+  getPosts();
   deletePost().then(()=>{
     getPosts();
     deletePost().then(() => {
